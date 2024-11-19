@@ -14,6 +14,6 @@ The app allows users to view their mood history and provides a user-friendly int
 - Activity Suggestions: Based on the selected mood, the app suggests activities that could help improve or complement the user's emotional state (e.g., meditation, exercise, reading).
 - User Authentication: Users can sign up and log in to securely track their moods over time.
 
-## Tech Stack**
+## Tech Stack
 
 EJS, CSS, JavaScript, Node.js, Express, Passport.js
