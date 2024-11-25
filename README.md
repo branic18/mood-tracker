@@ -1,7 +1,5 @@
 # Calming Mood Tracker
 
-<img src="/public/img/Mood-Tracker-UI.png" height="800" width= "1000" alt="Mood Tracker UI which has a mood entry form and a list of logged moods" >
-
 ## Overview
 
 The Calming Mood Tracker is a web application that helps users track their moods over time, providing insights and suggestions to improve mental well-being. Users can log their mood on a specific day by selecting the date and choosing a mood from a dropdown menu. The app also generates a list of suggested activities based on the selected mood, encouraging positive actions for better mental health.
@@ -19,3 +17,5 @@ The app allows users to view their mood history and provides a user-friendly int
 ## Tech Stack
 
 EJS, CSS, JavaScript, Node.js, Express, Passport.js
+
+<img src="/public/img/Mood-Tracker-UI.png" alt="Mood Tracker UI which has a mood entry form and a list of logged moods" >
