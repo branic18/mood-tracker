@@ -1,4 +1,6 @@
-# Full-Stack Mood Tracker
+# Calming Mood Tracker
+
+<img src="/public/img/Mood-Tracker-UI.png" height="800" width= "1000" alt="Mood Tracker UI which has a mood entry form and a list of logged moods" >
 
 ## Overview
 
