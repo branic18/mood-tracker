@@ -1,76 +1,277 @@
-body{
-  padding-top:80px;
-  word-wrap:break-word;
-}
-img{
-  height: 200px;
+#login-image {
+  max-width: 600px;
 }
 
-.moodCollection {
-  list-style-type: none;
+
+
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+  background: linear-gradient(180deg, #FBE3D2, #FAF4D9); 
+  color: #333;
+  margin: 0;
   padding: 0;
+  font-size: 18px; 
 }
 
-.moodCollection li {
-  background-color: #f8f9fa;
-  margin-bottom: 10px;
-  padding: 10px;
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #C24E63; 
+  margin-bottom: 20px;
+}
+
+
+
+/* Style for the Login and Signup Buttons */
+.btn-default {
+  background-color: #FBE3D2;
+  border: 1px solid #C24E63;
+  color: #C24E63; 
+  padding: 8px 15px;
+  text-decoration: none;
   border-radius: 5px;
+  font-weight: bold;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center; 
+  gap: 10px; 
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.moodCollection .mood {
+.btn-default:hover {
+  background-color: #C24E63; 
+  color: #fff;
+}
+
+.btn-default .fa {
+  font-size: 1.2rem; 
+  transition: transform 0.3s ease;
+}
+
+.btn-default:hover .fa {
+  transform: translateX(5px);
+}
+
+
+
+
+
+.page-header {
+  margin-bottom: 30px;
+}
+
+.page-header .btn-logout {
+  background-color: #FBE3D2;
+  border: 1px solid #C24E63;
+  color: #C24E63;
+  padding: 8px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.page-header .btn-logout:hover {
+  background-color: #C24E63;
+  color: #fff;
+}
+
+/* Mood Tracker Form */
+.mood-entry-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.mood-entry-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.input-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  margin-bottom: 20px;
+}
+
+.input-item {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.input-item:last-child {
+  margin-right: 0;
+}
+
+.mood-entry-form select,
+.mood-entry-form input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.mood-entry-form button {
+  background-color: #C24E63;
+  color: #fff;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  flex-shrink: 0; /* Prevents button from shrinking */
+}
+
+.mood-entry-form button:hover {
+  background-color: #A03C52;
+}
+
+/* Mood Log List */
+.moodCollection {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.mood-item {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+.moodSelection {
+  font-weight: bold;
+  color: #C24E63;
+  flex: 2; /* Taking more space */
+}
+
+.dateSelection {
+  font-style: italic;
+  color: #888;
+  margin-left: 10px;
+  flex: 1; /* Takig less space */
+}
+
 .options {
   display: flex;
   gap: 10px;
-  align-items: center;
 }
 
-.edit, .update {
-  cursor: pointer;
-  padding: 5px 10px;
+.options button {
+  background-color: #FBE3D2;
   border: none;
-  background-color: #007bff;
-  color: white;
-  border-radius: 3px;
+  color: #C24E63;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  flex-shrink: 0;
 }
 
-.update.hidden {
-  display: none;
+.options button:hover {
+  background-color: #C24E63;
+  color: #fff;
 }
 
-.hidden {
-  display: none;
+.deleteClick {
+  background-color: #FAF4D9;
+  border: 1px solid #F7C5C0;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  flex-shrink: 0;
 }
 
+.deleteClick:hover {
+  background-color: #F7C5C0;
+}
+
+/* Suggested Actions */
 .mood-entry {
-  background-color: #f1f1f1;
+  background-color: #fff;
   padding: 15px;
-  margin-bottom: 20px;
+  margin-top: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .mood-entry p {
-  font-size: 14px;
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
 .mood-entry ul {
   list-style-type: disc;
-  margin-left: 20px;
+  padding-left: 20px;
+}
+
+.mood-entry ul li {
+  margin: 5px 0;
 }
 
 
-@media (max-width: 767px) {
-  .moodCollection {
-    padding-left: 15px;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Mobile Size */
+@media (max-width: 768px) {
+  .container {
+      padding: 20px;
   }
-  .mood-entry {
-    margin-bottom: 10px;
+
+  h1 {
+      font-size: 2rem;
+  }
+
+  .input-group {
+      flex-direction: column;
+  }
+
+  .input-item {
+      margin-right: 0;
+      margin-bottom: 15px;
+  }
+
+  .mood-entry-form button,
+  .options button {
+      width: 100%;
+  }
+
+  .mood-item {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .moodSelection,
+  .dateSelection {
+      margin-bottom: 10px;
   }
 }
