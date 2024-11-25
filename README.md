@@ -4,7 +4,7 @@
 
 ## Overview
 
-The Full-Stack Mood Tracker is a web application that helps users track their moods over time, providing insights and suggestions to improve mental well-being. Users can log their mood on a specific day by selecting the date and choosing a mood from a dropdown menu. The app also generates a list of suggested activities based on the selected mood, encouraging positive actions for better mental health.
+The Calming Mood Tracker is a web application that helps users track their moods over time, providing insights and suggestions to improve mental well-being. Users can log their mood on a specific day by selecting the date and choosing a mood from a dropdown menu. The app also generates a list of suggested activities based on the selected mood, encouraging positive actions for better mental health.
 
 The app allows users to view their mood history and provides a user-friendly interface for both tracking and reflecting on their emotional well-being.
 
