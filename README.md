@@ -19,3 +19,17 @@ The app allows users to view their mood history and provides a user-friendly int
 EJS, CSS, JavaScript, Node.js, Express, Passport.js
 
 <img src="/public/img/Mood-Tracker-UI.png" alt="Mood Tracker UI which has a mood entry form and a list of logged moods" >
+
+## Installation
+
+1. Clone repo
+2. run `npm install`
+
+## Usage
+
+1. run `node server.js`
+2. Navigate to `localhost:8080`
+
+## Credit
+
+Modified from Scotch.io's auth tutorial
