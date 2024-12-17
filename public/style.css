@@ -1,0 +1,76 @@
+body{
+  padding-top:80px;
+  word-wrap:break-word;
+}
+img{
+  height: 200px;
+}
+
+.moodCollection {
+  list-style-type: none;
+  padding: 0;
+}
+
+.moodCollection li {
+  background-color: #f8f9fa;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.moodCollection .mood {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.options {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.edit, .update {
+  cursor: pointer;
+  padding: 5px 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 3px;
+}
+
+.update.hidden {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.mood-entry {
+  background-color: #f1f1f1;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.mood-entry p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.mood-entry ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+
+@media (max-width: 767px) {
+  .moodCollection {
+    padding-left: 15px;
+  }
+  .mood-entry {
+    margin-bottom: 10px;
+  }
+}

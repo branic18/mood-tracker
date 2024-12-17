@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+    <title>Mood Tracker</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1><span class="fa fa-anchor"></span> Mood Tracker Profile</h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+
+        
+        <div class="col-sm-6">
+
+          <!-- Mood tracker form -->
+          <h2>Add a mood</h2>
+          <% if (user) { %>
+              <form action="/submitMood" method="POST">
+                  <!-- Date -->
+                  <label for="date-entry">Date Entry:</label>
+                  <input type="date" id="date-entry" name="date-entry" required> 
+
+      
+                  <!-- Mood -->
+                  <label for="mood">Select your mood for the day:</label>
+                  <select id="mood-dropdown" name="mood" required>
+                      <option value="happy">Happy</option>
+                      <option value="sad">Sad</option>
+                      <option value="neutral">Neutral</option>
+                  </select>
+                  
+                  <button type="submit" id="submit-mood">Submit Mood</button>
+              </form>
+          <% } %>
+      
+      </div>
+
+      
+
+
+
+      <!--List of all moods logged-->
+      <ul class="moodCollection">
+        <% for(var i = 0; i < moodCollection.length; i++) { %>
+          <li>
+            <form class="mood" data-id="<%= moodCollection[i]._id %>" action="/mood/<%= moodCollection[i]._id %>?_method=PUT" method="POST">
+              <span class="moodSelection"><%= moodCollection[i].mood %></span>
+              <span class="dateSelection"><%= moodCollection[i].date %></span>
+              <div class="options">
+                <button class="edit" type="button">Edit</button>
+                <button class="update hidden" type="submit">Update</button> 
+              </div>
+            </form>
+          </li>
+        <% } %>
+      </ul>
+
+
+
+      
+
+      <!--Suggested Actions-->
+      <h2>Suggested Actions</h2>
+        <% moodCollection.forEach(function(moodEntry) { %>
+        <div class="mood-entry">
+            <p><strong>Mood:</strong> <%= moodEntry.mood %></p> <!-- moodEntry represents each iteration -->
+            <p><strong>Date:</strong> <%= new Date(moodEntry.date).toDateString() %></p> 
+
+            <% if (moodEntry.actions && moodEntry.actions.length > 0) { %>
+            <p><strong>Suggested Actions:</strong></p>
+            <ul>
+                <% moodEntry.actions.forEach(function(action) { %>
+                <li><%= action %></li>
+                <% }); %>
+            </ul>
+            <% } else { %>
+            <p>No suggestions available for this mood.</p>
+            <% } %>
+        </div>
+        <% }); %>
+
+      
+      
+
+
+      </div>
+
+
+</div>
+
+<script src="/main.js"></script>
+
+</body>
+</html>
