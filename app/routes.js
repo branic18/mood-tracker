@@ -106,7 +106,7 @@ app.post('/submitMood', (req, res) => {
 });
 
 
-// Edit mood 
+// Edit mood
 
 app.put('/mood/:id', async (req, res) => {
     const moodId = req.params.id;
