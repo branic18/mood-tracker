@@ -121,9 +121,11 @@ app.put('/mood/:id', async (req, res) => {
 
         console.log('Updating mood:', { moodId, mood, date: parsedDate });
 
+        const actions = moodActions[mood] || ["No suggestions available for this mood."];
+
         const result = await Mood.updateOne(
             { _id: moodId },
-            { $set: { mood: mood, date: parsedDate } } 
+            { $set: { mood: mood, date: parsedDate, actions: actions } } 
         );
 
         if (result.nModified === 0) {
@@ -138,6 +140,15 @@ app.put('/mood/:id', async (req, res) => {
     }
 });
   
+app.delete('/deleteMood/:id', (req, res) => {
+    const moodId = req.params.id;
+    Mood.findByIdAndDelete(moodId, (err, result) => {
+        if (err) return res.status(500).send({ message: "Error deleting mood" });
+        if (!result) return res.status(404).send({ message: "Mood not found" });
+        res.send({ message: "Mood deleted successfully" });
+    });
+});
+
 
 
 

@@ -9,70 +9,66 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-<div class="container">
+  <div class="container">
 
     <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> Mood Tracker Profile</h1>
-        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+        <h1>Mood Tracker Profile</h1>
+        <a href="/logout" class="btn btn-logout">Logout</a>
     </div>
 
     <div class="row">
 
-        
-        <div class="col-sm-6">
-
-          <!-- Mood tracker form -->
-          <h2>Add a mood</h2>
-          <% if (user) { %>
-              <form action="/submitMood" method="POST">
-                  <!-- Date -->
-                  <label for="date-entry">Date Entry:</label>
-                  <input type="date" id="date-entry" name="date-entry" required> 
-
+        <!-- Mood tracker form -->
+        <h2>Add a mood</h2>
+        <% if (user) { %>
+        <form action="/submitMood" method="POST" class="mood-entry-form">
       
-                  <!-- Mood -->
-                  <label for="mood">Select your mood for the day:</label>
-                  <select id="mood-dropdown" name="mood" required>
-                      <option value="happy">Happy</option>
-                      <option value="sad">Sad</option>
-                      <option value="neutral">Neutral</option>
-                  </select>
-                  
-                  <button type="submit" id="submit-mood">Submit Mood</button>
-              </form>
-          <% } %>
-      
-      </div>
+            <!-- Mood, Date Inputs and Submit Button in One Row -->
+            <div class="input-group">
+                <div class="input-item">
+                    <label for="mood">Select your mood for the day:</label>
+                    <select id="mood-dropdown" name="mood" required>
+                        <option value="happy">Happy</option>
+                        <option value="sad">Sad</option>
+                        <option value="neutral">Neutral</option>
+                    </select>
+                </div>
+                
+                <div class="input-item">
+                    <label for="date-entry">Date Entry:</label>
+                    <input type="date" id="date-entry" name="date-entry" required> 
+                </div>
 
-      
-
-
-
-      <!--List of all moods logged-->
-      <ul class="moodCollection">
-        <% for(var i = 0; i < moodCollection.length; i++) { %>
-          <li>
-            <form class="mood" data-id="<%= moodCollection[i]._id %>" action="/mood/<%= moodCollection[i]._id %>?_method=PUT" method="POST">
-              <span class="moodSelection"><%= moodCollection[i].mood %></span>
-              <span class="dateSelection"><%= moodCollection[i].date %></span>
-              <div class="options">
-                <button class="edit" type="button">Edit</button>
-                <button class="update hidden" type="submit">Update</button> 
-              </div>
-            </form>
-          </li>
+                <!-- Submit button in the same row -->
+                <button type="submit" id="submit-mood">Submit Mood</button>
+            </div>
+        </form>
         <% } %>
-      </ul>
 
+        <!-- List of all moods logged -->
+        <ul class="moodCollection">
+        <% for(var i = 0; i < moodCollection.length; i++) { %>
+            <li class="mood-item">
+                <form class="mood" id="no-box-shadow-override" data-id="<%= moodCollection[i]._id %>" action="/mood/<%= moodCollection[i]._id %>?_method=PUT" method="POST">
+                    <span class="moodSelection"><%= moodCollection[i].mood %></span>
+                    <span class="dateSelection"><%= moodCollection[i].date %></span>
+                    <div class="options">
+                        <button class="edit" type="button">Edit</button>
+                        <button class="update hidden" type="submit">Update</button> 
+                    </div>
+                </form>       
+                <form action="/deleteMood/<%= moodCollection[i]._id %>?_method=DELETE" method="POST" class="deleteForm" id="no-box-shadow-override">
+                    <button class="deleteClick" type="submit">Delete</button>
+                </form>
+            </li>
+        <% } %>
+        </ul>
 
-
-      
-
-      <!--Suggested Actions-->
-      <h2>Suggested Actions</h2>
+        <!-- Suggested Actions -->
+        <h2>Suggested Actions</h2>
         <% moodCollection.forEach(function(moodEntry) { %>
         <div class="mood-entry">
-            <p><strong>Mood:</strong> <%= moodEntry.mood %></p> <!-- moodEntry represents each iteration -->
+            <p><strong>Mood:</strong> <%= moodEntry.mood %></p>
             <p><strong>Date:</strong> <%= new Date(moodEntry.date).toDateString() %></p> 
 
             <% if (moodEntry.actions && moodEntry.actions.length > 0) { %>
@@ -88,14 +84,12 @@
         </div>
         <% }); %>
 
-      
-      
-
-
-      </div>
-
+    </div>
 
 </div>
+
+
+
 
 <script src="/main.js"></script>
 
