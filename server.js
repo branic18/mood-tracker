@@ -11,7 +11,7 @@ var flash    = require('connect-flash');
 var morgan       = require('morgan'); // Logging
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser'); // See whats coming with req
-var session      = require('express-session'); // Keep logged in session alive
+var session      = require('cookie-session'); // This is to deploy it
 
 var configDB = require('./config/database.js');
 
@@ -58,5 +58,6 @@ app.use((req, res, next) => {
 });
 
 // launch ======================================================================
-app.listen(8000);
-console.log('The magic happens on port ' + 8000);
+app.listen(port, "0.0.0.0", () => {
+  console.log(`Server is running on port ${port}`);
+});
