@@ -12,7 +12,7 @@ var morgan       = require('morgan'); // Logging
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser'); // See whats coming with req
 
-var session      = require('cookie-session'); // This is to deploy it
+var session      = require('express-session'); // Keep logged in session alive
 
 var configDB = require('./config/database.js');
 
