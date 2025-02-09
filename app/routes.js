@@ -37,7 +37,7 @@ const moodActions = {
 // normal routes ===============================================================
 
     app.get('/', function(req, res) {
-        res.render('index.ejs');
+        res.render('views/index.ejs');
     });
 
     const Mood = require('./models/mood'); 
