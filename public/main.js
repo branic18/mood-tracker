@@ -47,3 +47,4 @@ Array.from(document.querySelectorAll('.deleteClick')).forEach(button => {
       }
   });
 });
+

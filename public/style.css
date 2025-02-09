@@ -6,7 +6,7 @@
 
 body {
   font-family: 'Helvetica Neue', sans-serif;
-  background: linear-gradient(180deg, #FBE3D2, #FAF4D9); 
+  /* background: linear-gradient(180deg, #FBE3D2, #FAF4D9);  */
   color: #333;
   margin: 0;
   padding: 0;
@@ -14,7 +14,7 @@ body {
 }
 
 .container {
-  max-width: 900px;
+  /* max-width: 900px; */
   margin: 0 auto;
   padding: 30px;
 }
@@ -226,9 +226,23 @@ h1 {
   margin: 5px 0;
 }
 
+.box {
+  float: left;
+  width: 30%;
+  height: 20%;
+}
 
+body.happy {
+  background-color: #FFE680;
+}
 
+body.sad {
+  background-color: #7DA3DA;
+}
 
+body.neutral {
+  background-color: #FBE3D2;
+}
 
 
 
