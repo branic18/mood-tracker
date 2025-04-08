@@ -1,6 +1,6 @@
 // config/database.js
 module.exports = {
 
-    'url' : 'MONGO_URL', 
+    'MONGO_URL' : 'mongodb://mongo:hFEAPBxjHSBPGoLgPeajINPqOYOBuycW@mongodb-niml.railway.internal:27017', 
     'dbName': 'mood-tracker'
 };
