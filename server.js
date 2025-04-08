@@ -1,6 +1,7 @@
 // set up ======================================================================
-// get all the tools we need
+require('dotenv').config();  // Load environment variables from .env file
 var express  = require('express');
+const path = require('path');
 var app      = express();
 var port     = process.env.PORT || 8080; // All of your secreats will be in an env file. Put this in your git ignore. So you secrets stay locally. Your hosting provider will use a recommended port, if not they'll use the one you hard-coded (8000)
 // const MongoClient = require('mongodb').MongoClient // ERROR: 
@@ -16,12 +17,16 @@ var bodyParser   = require('body-parser'); // See whats coming with req
 var session      = require('cookie-session'); // This is to deploy it
 
 var configDB = require('./config/database.js');
+// var configDB  = process.env.MONGO_URL;
+
+// console.log('MongoDB URI:', process.env.MONGO_URL);  // Log the MongoDB URI to see if it's undefined
 
 const methodOverride = require('method-override')
 app.use(methodOverride('_method'))
 
 // configuration ===============================================================
 mongoose.connect(configDB.url, { useNewUrlParser: true, useUnifiedTopology: true })
+// mongoose.connect(configDB, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Mongoose connected successfully');
     require('./app/routes.js')(app, passport);
@@ -37,11 +42,11 @@ app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('public')) // All static files don't need individual routes for these pieces of content
 
-app.use(express.static('public'));;
-
+app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs'); // set up ejs for templating
+
+app.use(express.static('public')) // All static files don't need individual routes for these pieces of content
 
 // required for passport- this keeps track of whether the user is logged in or not. Once there's a cookie in the browser it keeps the user logged in
 app.use(session({ // Keeps us logged in, sets up session
