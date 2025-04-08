@@ -19,7 +19,7 @@ const methodOverride = require('method-override')
 app.use(methodOverride('_method'))
 
 // configuration ===============================================================
-mongoose.connect(configDB.url, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(configDB.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Mongoose connected successfully');
     require('./app/routes.js')(app, passport);
