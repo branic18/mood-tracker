@@ -8,25 +8,28 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/style.css">
 </head>
-<body>
+<body class="<%= backgroundColor %>">
+    <%= backgroundColor %>
+
   <div class="container">
 
-    <div class="page-header text-center">
-        <h1>Mood Tracker Profile</h1>
-        <a href="/logout" class="btn btn-logout">Logout</a>
-    </div>
+    <div class="row"> <!--First row: Mood Tracker title and description, mood submission, logout-->
 
-    <div class="row">
+        <div class="first-box">
+            <h1>Mood Tracker Profile</h1>
+            <p>What should you do today?</p>
+            <p>Enter your mood to find out!</p>
+        </div>
 
+        <div class="box">
         <!-- Mood tracker form -->
-        <h2>Add a mood</h2>
         <% if (user) { %>
         <form action="/submitMood" method="POST" class="mood-entry-form">
       
             <!-- Mood, Date Inputs and Submit Button in One Row -->
             <div class="input-group">
                 <div class="input-item">
-                    <label for="mood">Select your mood for the day:</label>
+                    <label for="mood">What's your mood?:</label>
                     <select id="mood-dropdown" name="mood" required>
                         <option value="happy">Happy</option>
                         <option value="sad">Sad</option>
@@ -35,7 +38,7 @@
                 </div>
                 
                 <div class="input-item">
-                    <label for="date-entry">Date Entry:</label>
+                    <label for="date-entry">Date:</label>
                     <input type="date" id="date-entry" name="date-entry" required> 
                 </div>
 
@@ -44,6 +47,25 @@
             </div>
         </form>
         <% } %>
+        </div>
+
+
+        <div class="logout-box">
+            <a href="/logout" class="btn btn-logout">Logout</a>
+        </div>
+
+    </div>
+
+    <div class="main-mood">
+        <% if (moodCollection.length > 0) { %>
+            <% const mainMoodData = moodCollection[moodCollection.length - 1]; %> <!-- '-1' grabs the last object -->
+            <p class="large-mood-text"><strong></strong> <%= mainMoodData.mood %> </p>
+            <p><strong>Last logged date:</strong> <%= mainMoodData.date %> </p>
+            <p class="large-actions-text"><%= mainMoodData.actions %></p>
+          <% } else { %>
+            <p>Enter your mood above</p>
+          <% } %>
+    </div>
 
         <!-- List of all moods logged -->
         <ul class="moodCollection">
@@ -84,7 +106,7 @@
         </div>
         <% }); %>
 
-    </div>
+    
 
 </div>
 
