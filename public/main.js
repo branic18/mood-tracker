@@ -47,3 +47,46 @@ Array.from(document.querySelectorAll('.deleteClick')).forEach(button => {
       }
   });
 });
+
+// fetch('/profile', {
+ //     method: 'GET',
+ //     headers: {
+ //         'Content-Type': 'application/json',
+ //     },
+ //     // body: JSON,
+ //     //body: JSON.stringify(payload),
+ // })
+ // .then(response => {
+ //     if (!response.ok) {
+ //       throw new Error('Network response was not ok');
+ //     }
+ //     return response.text();
+ //   })
+ // .then(data => {
+ //   // Handle the data
+ //   console.log("This is the data from profile route", data.moodCollection)
+ //   // changeBackgroundColor(data);
+ // })
+ // .catch(error => console.error('Error:', error));
+
+ // function changeBackgroundColor(data) {
+ //     console.log("This is the data from profile route", data)
+
+ //     let backgroundColor = '#EEDAD1'; // Default color
+
+ //     if (data.mood === 'happy') {
+ //       backgroundColor = '#FFE680';
+ //     } else if (data.mood === 'sad') {
+ //       backgroundColor = '#7DA3DA';
+ //     } else if (data.mood === 'angry') {
+ //       backgroundColor = 'blue';
+ //     } else if (data.mood === 'stressed') {
+ //         backgroundColor = '#935252';
+ //     } else if (data.mood === 'excited') {
+ //         backgroundColor = 'blue';
+ //     } else {
+ //         backgroundColor = '#EEDAD1';
+ //     }
+
+ //     setBodyBackgroundColor(backgroundColor);
+ //   }
