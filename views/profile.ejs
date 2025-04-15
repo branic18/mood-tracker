@@ -10,11 +10,12 @@
 </head>
 <body class="<%= backgroundColor %>">
     <%= backgroundColor %>
+
   <div class="container">
 
     <div class="row"> <!--First row: Mood Tracker title and description, mood submission, logout-->
 
-        <div class="box">
+        <div class="first-box">
             <h1>Mood Tracker Profile</h1>
             <p>What should you do today?</p>
             <p>Enter your mood to find out!</p>
@@ -22,7 +23,6 @@
 
         <div class="box">
         <!-- Mood tracker form -->
-        <h2>Add a mood</h2>
         <% if (user) { %>
         <form action="/submitMood" method="POST" class="mood-entry-form">
       
@@ -50,10 +50,21 @@
         </div>
 
 
-        <div class="box">
+        <div class="logout-box">
             <a href="/logout" class="btn btn-logout">Logout</a>
         </div>
 
+    </div>
+
+    <div class="main-mood">
+        <% if (moodCollection.length > 0) { %>
+            <% const mainMoodData = moodCollection[moodCollection.length - 1]; %> <!-- '-1' grabs the last object -->
+            <p class="large-mood-text"><strong></strong> <%= mainMoodData.mood %> </p>
+            <p><strong>Last logged date:</strong> <%= mainMoodData.date %> </p>
+            <p class="large-actions-text"><%= mainMoodData.actions %></p>
+          <% } else { %>
+            <p>Enter your mood above</p>
+          <% } %>
     </div>
 
         <!-- List of all moods logged -->
