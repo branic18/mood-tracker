@@ -6,7 +6,7 @@
 
 body {
   font-family: 'Helvetica Neue', sans-serif;
-  background: linear-gradient(180deg, #FBE3D2, #FAF4D9); 
+  /* background: linear-gradient(180deg, #FBE3D2, #FAF4D9);  */
   color: #333;
   margin: 0;
   padding: 0;
@@ -14,7 +14,7 @@ body {
 }
 
 .container {
-  max-width: 900px;
+  /* max-width: 900px; */
   margin: 0 auto;
   padding: 30px;
 }
@@ -101,6 +101,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center; 
+  /* justify-content: center; */
   margin-bottom: 20px;
 }
 
@@ -136,6 +137,14 @@ h1 {
 
 .mood-entry-form button:hover {
   background-color: #A03C52;
+}
+
+.large-mood-text {
+  font-size: 8rem;
+}
+
+.large-actions-text {
+  font-size: 3rem;
 }
 
 /* Mood Log List */
@@ -226,9 +235,35 @@ h1 {
   margin: 5px 0;
 }
 
+.first-box {
+  float: left;
+  width: 20%;
+  height: 20%;
+}
 
+.box {
+  float: left;
+  width: 40%;
+  height: 20%;
+}
 
+.logout-box {
+  float: left;
+  width: 10%;
+  /* height: 20%; */
+}
 
+body.happy {
+  background-color: #FFE680;
+}
+
+body.sad {
+  background-color: #7DA3DA;
+}
+
+body.neutral {
+  background-color: #FBE3D2;
+}
 
 
 

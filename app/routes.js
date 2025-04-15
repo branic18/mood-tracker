@@ -49,8 +49,14 @@ const moodActions = {
             const user = req.user || null; 
            
             const moodCollection = await Mood.find({ userId: req.user._id }); 
+
+            const latestMood = await Mood.findOne().sort({ timestamp: 1 }).exec();
+            console.log(`This is the latest log: ${latestMood}`)
+            console.log(`This is the latest mood: ${latestMood.mood}`)
+            const backgroundColor = latestMood.length > 0 ? latestMood.mood : 'neutral'
+            console.log(`This is the background color: ${backgroundColor}`)
             
-            res.render('profile', { user, moodCollection });
+            res.render('profile', { user, moodCollection, backgroundColor });
         } catch (err) {
             console.log('Error fetching moods:', err);
             res.status(500).send('Internal Server Error');
@@ -106,7 +112,7 @@ app.post('/submitMood', (req, res) => {
 });
 
 
-// Edit mood 
+// Edit mood
 
 app.put('/mood/:id', async (req, res) => {
     const moodId = req.params.id;
