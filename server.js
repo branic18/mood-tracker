@@ -1,8 +1,10 @@
 // set up ======================================================================
 // get all the tools we need
+require('dotenv').config();
 var express  = require('express');
 var app      = express();
 var port     = process.env.PORT || 8080; // All of your secreats will be in an env file. Put this in your git ignore. So you secrets stay locally. Your hosting provider will use a recommended port, if not they'll use the one you hard-coded (8000)
+
 // const MongoClient = require('mongodb').MongoClient // ERROR: 
 var mongoose = require('mongoose'); // Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node.js. Provides a straight-forward, schema-based solution to model your application data
 var passport = require('passport'); // Not sure what this is
@@ -13,11 +15,14 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser'); // See whats coming with req
 var session      = require('cookie-session'); // This is to deploy it
 
+
 var configDB = require('./config/database.js');
+// const configDB = process.env.MONGO_URL;
 
 const methodOverride = require('method-override')
 app.use(methodOverride('_method'))
 
+console.log('Connecting to MongoDB with URL:', process.env.MONGO_URL);
 // configuration ===============================================================
 mongoose.connect(configDB.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
